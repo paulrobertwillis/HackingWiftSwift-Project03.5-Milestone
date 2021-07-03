@@ -29,6 +29,7 @@ class ViewController: UITableViewController {
         }
         
         flags.sort()
+        
     }
     
     func sanitiseString(string: String) -> String {
@@ -51,6 +52,7 @@ class ViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+
 
 }
 
