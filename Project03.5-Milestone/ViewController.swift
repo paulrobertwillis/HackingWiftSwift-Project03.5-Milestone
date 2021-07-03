@@ -9,9 +9,13 @@ import UIKit
 
 class ViewController: UITableViewController {
     var flags = [String]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Flag Viewer"
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
@@ -23,7 +27,7 @@ class ViewController: UITableViewController {
                 flags.append(sanitisedItem)
             }
         }
-                
+        
         flags.sort()
     }
     
@@ -42,12 +46,8 @@ class ViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            // 2: success! Set its selectedImage property
-            vc.selectedImage = flags[indexPath.row]
-
-            // 3: now push it onto the navigation controller
+            vc.selectedImage = (flags[indexPath.row].lowercased() + "@2x.png")
             navigationController?.pushViewController(vc, animated: true)
         }
     }
