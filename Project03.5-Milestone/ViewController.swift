@@ -43,6 +43,11 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Flag", for: indexPath)
         cell.textLabel?.text = flags[indexPath.row]
+        
+        let imageName = flags[indexPath.row].lowercased() + "@2x.png"
+        let image = UIImage(named: imageName)
+        cell.imageView?.image = image
+        
         return cell
     }
 
